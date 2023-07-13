@@ -7,31 +7,6 @@ portal_button.addEventListener("click", (event) => {
     window.location.href = 'http://my.marist.edu/';
 });
 
-/*
-
-let judy = {firstName: "Judy", lastName: "Smith", link: "https://www.google.com"};
-let brian = {firstName: "Brian", lastName: "Gormanly", link: "https://freeagora.org"};
-let elle = {firstName: "Elle", link: "https://www.marist.edu"};
-
-let myPeps = [judy, brian, elle];
-
-window.addEventListener("load", () => {
-    for(let i = 0; i < myPeps.length; i++) {
-        displayFeed(myPeps[i]);
-    }
-});
-
-function displayFeed(person) {
-    let feed = document.getElementById('news_feed');
-    feed.innerHTML += "<div>";
-    feed.innerHTML += "<h1><a href='" + person.link + "'>" + person.firstName + "</a></h1>";
-    feed.innerHTML += "<div>";
-}
-
-console.log(myPeps);
-
-*/
-
 let story1 = {
     title: "Marist Story 1",
     body: "This is the body of the story, it may be longer",
