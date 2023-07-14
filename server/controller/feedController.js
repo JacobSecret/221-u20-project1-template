@@ -1,8 +1,8 @@
 const feedItem = require('../model/feedItem');
 
-const feedItem1 = feedItem.createFeedItem();
-const feedItem2 = feedItem.createFeedItem();
-const feedItem3 = feedItem.createFeedItem();
+const feedItem1 = feedItem.createFeedItem("Cat on Marist campus", "Meow meow meow");
+const feedItem2 = feedItem.createFeedItem("Student gets tired of coding", "Get back to work");
+const feedItem3 = feedItem.createFeedItem("Spam", "Eggs", "https://en.wikipedia.org/wiki/Spam_(food)", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SPAM_and_Eggs.jpg/1200px-SPAM_and_Eggs.jpg");
 
 let feedItems = [feedItem1, feedItem2, feedItem3];
 
@@ -11,7 +11,6 @@ exports.getFeedItems = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 	res.send(feedItems);
 }
-
 // Creates a new feed item from the attributes of parameter req, and saves it in the feedItems aray. //
 exports.saveFeedItem = function (req, res) {
 	let newFeedItem = feedItem.createFeedItem(req.body.title, req.body.body, req.body.linkUrl, req.body.imageUrl);
@@ -19,13 +18,11 @@ exports.saveFeedItem = function (req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	res.send(feedItems);
 }
-
 // Fetches an item from the feed by using an index number defined in parameter req. //
 exports.getFeedItem = function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
   	res.send(feedItems[req.params.feedItemId]);
 }
-
 // Removes a specified object from the array of feed items. //
 exports.deleteFeedItem = function(req, res) {
 	console.log('deleting item');
@@ -34,11 +31,9 @@ exports.deleteFeedItem = function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	res.send(feedItems);
 }
-
 // Changes the content of a feed item. //
 exports.updateFeedItem = function(req, res) {
 	var updatedFeedItem = feedItems[req.params.feedItemId];
-	
 	console.log(req.body.title);
 	if(req.body.title)
 		updatedFeedItem.title = req.body.title;
@@ -50,7 +45,6 @@ exports.updateFeedItem = function(req, res) {
 		updatedFeedItem.imageUrl = req.body.imageUrl;
 
 	feedItems[req.params.feedItemId] = updatedFeedItem;
-
 	res.setHeader('Content-Type', 'application/json');
 	res.send(feedItems[req.params.feedItemId]);
 }
